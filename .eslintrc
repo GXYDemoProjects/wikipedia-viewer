@@ -1,0 +1,22 @@
+/**
+ * Created by gxy on 2017/6/30.
+ */
+{
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import",
+    "jasmine"
+  ],
+  "rules": {
+    "no-console": 0
+  },
+  "extends": [
+    "eslint-config-airbnb",
+    "plugin:jasmine/recommended"
+  ],
+  "env": {
+    "jasmine": true,
+    "browser": true
+  }
+}

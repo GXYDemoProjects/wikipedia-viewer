@@ -1,0 +1,20 @@
+<!doctype html>
+<html ng-app="app" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ShowLocalWeather</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
+</head>
+<body ng-controller="wikiController as wiki">
+  <div class="icon" ng-click="wiki.startSearch()"></div>
+  <div class="input">
+    <input type="text" value="Submit">
+  </div>
+  <ul class="queryResult">
+    <li ng-repeat="item in wiki.searchItems">
+      <a href={{item.href}}>{{item.name}}</a>
+    </li>
+  </ul>
+</body>
+</html>
