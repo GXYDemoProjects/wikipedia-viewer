@@ -1,1 +1,1 @@
-"# WikipediaViewer" 
+# WikipediaViewer

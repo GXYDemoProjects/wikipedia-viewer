@@ -6,6 +6,7 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const bourbon = require('bourbon').includePaths;
 
 /**
  * Env
@@ -115,7 +116,7 @@ module.exports = (function makeWebpackConfig() {
         use: [
           { loader: 'css-loader', query: { sourceMap: true } },
           { loader: 'postcss-loader' },
-          { loader: 'sass-loader' },
+          { loader: 'sass-loader', options: { includePaths: [ bourbon ] } },
         ],
       }),
     }, {
