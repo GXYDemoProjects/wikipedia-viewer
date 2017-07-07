@@ -3,21 +3,20 @@
  */
 import angular from 'angular';
 import $ from 'jquery';
-import ngAnimate from 'angular-animate';
 import '../style/app.scss';
 
 
-const app = angular.module('WikiApp', [ngAnimate]);
-app.controller('MainCtrl', function ($scope, $http, $timeout, $sce) {
-  var form = $('form');
-  var close = $('.eks');
-  var input = $('input');
-  var search = $("#search");
-  var help = $("#help");
+const app = angular.module('WikiApp', []);
+app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
+  const form = $('form');
+  const close = $('.eks');
+  const input = $('input');
+  const search = $('#search');
+  const help = $('#help');
 
   $scope.results = [];
 
-  close.on('click', function () {
+  close.on('click', () => {
     form.toggleClass('open');
 
     if (!form.hasClass('open') && $scope.searchTxt !== '' && typeof $scope.searchTxt !== 'undefined') {
@@ -29,11 +28,9 @@ app.controller('MainCtrl', function ($scope, $http, $timeout, $sce) {
     $scope.$apply();
   });
 
-  input.on('transitionend webkitTransitionEnd oTransitionEnd', function () {
+  input.on('transitionend webkitTransitionEnd oTransitionEnd', () => {
     if (form.hasClass('open')) {
       input.focus();
-    } else {
-      return;
     }
   });
 
@@ -41,27 +38,39 @@ app.controller('MainCtrl', function ($scope, $http, $timeout, $sce) {
     $scope.results = [];
     help.addClass('hide');
     search.removeClass('fullHeight');
-    var title = input.val();
-    var api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
-    var cb = '&callback=JSON_CALLBACK';
-    var page = 'https://en.wikipedia.org/?curid=';
+    const title = $scope.searchTxt;
+    const api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
+    const cb = '&callback=JSON_CALLBACK';
+    const page = 'https://en.wikipedia.org/?curid=';
 
     $.ajax({
       url: api + title + cb,
       jsonp: 'callback',
       dataType: 'jsonp',
       xhrFields: {
-        withCredentials: true
-      }
-    }).done(function (data) {
-      console.log('data:',data);
-      var results = data.query.pages;
-      $.each(results, function (k, v) {
-        console.log('k:',k);
-        $scope.results.push({title: v.title, body: v.extract, page: page + v.pageid})
-      })
+        withCredentials: true,
+      },
+    }).done((data) => {
+      const results = data.query.pages;
+      $.each(results, (k, v) => {
+        $scope.results.push({ title: v.title, body: v.extract, page: page + v.pageid });
+      });
       $scope.$apply();
     });
+
+    /* $http.get(api + title + cb, {
+     withCredentials: true,
+     }).then((response) => {
+     const data = response.data;
+     const results = data.query.pages;
+     angular.forEach(results, (k, v) => {
+     console.log('sucess:',sucess);
+     $scope.results.push({ title: v.title, body: v.extract, page: page + v.pageid });
+     });
+     // $scope.$apply();
+     }, (error) => {
+     console.log('error:', error);
+     });*/
   };
-});
+}]);
 
