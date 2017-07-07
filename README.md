@@ -13,6 +13,12 @@ To be done:
 1. Unit test
 2. E2E test
 
+## my-theme
+The branch my_theme is a new theme based on the master. And I made some optimization
+such as decrease the unnecessary dom manipulation in angular.controller.
+
+![img][3]
 
 [1]: https://codepen.io/freeCodeCamp/full/wGqEga
 [2]: https://github.com/GuoXiaoyang/ShowLocalWeather
+[3]: http://static.zybuluo.com/guoxiaoyang/bgrar1yn3n9ju8c3qbc85w9b/image_1bker5hsm16qhk541a9i1f0o1lq99.png

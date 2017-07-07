@@ -4,28 +4,31 @@
   <meta charset="UTF-8">
   <title>ShowLocalWeather</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="/css/app-55dfdc6874.min.css" rel="stylesheet"></head>
+<link href="/css/app-f45ffa1503.min.css" rel="stylesheet"></head>
 <body>
 
 <main ng-app="WikiApp" ng-controller="MainCtrl">
   <div class="wrapper fullHeight" id="search">
-    <a class="white-text" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
-      Click here for a random article
-    </a>
-    <br/>
-    <form ng-submit="search()">
-      <input type="text" ng-model="searchTxt"/>
-      <div class="eks"></div>
+    <div class="logo">
+      <img ng-src="{{imgUrl}}" alt="logo">
+    </div>
+    <form ng-submit="search()" ng-init="focused=true" ng-class = "{'onfocus':focused}">
+      <input type="text" ng-model="searchTxt" ng-focus="focused=true"
+             ng-blur="focused=false" autofocus/>
     </form>
-    <p class="white-text" id="help">Click icon to search</p>
+    <a class="random" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
+      get random
+    </a>
+
   </div>
-  <div class="wrapper">
+  <div class="wrapper" ng-hide="isUndefined()">
     <ul><a ng-href="{{result.page}}" target="_blank" ng-repeat="result in results">
       <li>
         <h1>{{result.title}}</h1>
         <p>{{result.body}}</p>
-      </li></a></ul>
+      </li>
+    </a></ul>
   </div>
 </main>
-<script type="text/javascript" src="/manifest.1dc8b959761b9dbe86a1.min.js"></script><script type="text/javascript" src="/vendor.dbd711e42d4dc849c108.min.js"></script><script type="text/javascript" src="/app.927dc926fb84a3d4604e.min.js"></script></body>
+<script type="text/javascript" src="/manifest.49a337379607ea334032.min.js"></script><script type="text/javascript" src="/vendor.f050441d704b5e395611.min.js"></script><script type="text/javascript" src="/app.fe50a751d21f2e333d30.min.js"></script></body>
 </html>
