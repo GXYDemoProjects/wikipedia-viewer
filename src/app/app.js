@@ -4,40 +4,24 @@
 import angular from 'angular';
 import $ from 'jquery';
 import '../style/app.scss';
+import logoImg from '../img/wiki-search.png';
 
 
 const app = angular.module('WikiApp', []);
-app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
-  const form = $('form');
-  const close = $('.eks');
-  const input = $('input');
-  const search = $('#search');
-  const help = $('#help');
 
+app.controller('MainCtrl', ['$scope', function ($scope) {
+
+  $scope.imgUrl = logoImg;
   $scope.results = [];
 
-  close.on('click', () => {
-    form.toggleClass('open');
-
-    if (!form.hasClass('open') && $scope.searchTxt !== '' && typeof $scope.searchTxt !== 'undefined') {
-      search.toggleClass('fullHeight');
-      help.toggleClass('hide');
-      $scope.searchTxt = '';
-    }
-    $scope.results = [];
-    $scope.$apply();
-  });
-
-  input.on('transitionend webkitTransitionEnd oTransitionEnd', () => {
-    if (form.hasClass('open')) {
-      input.focus();
-    }
-  });
-
+  $scope.isUndefined = function () {
+    const flag = $scope.searchTxt === undefined || $scope.searchTxt === '';
+    if (flag) $scope.results = [];
+    return flag;
+  };
   $scope.search = function () {
     $scope.results = [];
-    help.addClass('hide');
-    search.removeClass('fullHeight');
+    $('#search').removeClass('fullHeight');
     const title = $scope.searchTxt;
     const api = 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=pageimages|extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=';
     const cb = '&callback=JSON_CALLBACK';
@@ -73,9 +57,8 @@ app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
      });*/
   };
 }]);
-
-
 if (DEVELOPMENT === 'development') {
+
   if (module.hot) {
     module.hot.accept();
   }

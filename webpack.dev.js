@@ -14,15 +14,13 @@ const devConfig = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': {
-        DEVELOPMENT: JSON.stringify('development'),
-      }
+      DEVELOPMENT: JSON.stringify('development'),
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
   devServer: {
     hot: true, // Tell the dev-server we're using HMR
-    contentBase: path.resolve(__dirname, 'dist'),
+    contentBase: path.resolve(__dirname, './src/public'),
     publicPath: '/',
   },
 };

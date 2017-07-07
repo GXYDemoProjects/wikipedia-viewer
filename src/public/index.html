@@ -9,22 +9,25 @@
 
 <main ng-app="WikiApp" ng-controller="MainCtrl">
   <div class="wrapper fullHeight" id="search">
-    <a class="white-text" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
-      Click here for a random article
-    </a>
-    <br/>
-    <form ng-submit="search()">
-      <input type="text" ng-model="searchTxt"/>
-      <div class="eks"></div>
+    <div class="logo">
+      <img ng-src="{{imgUrl}}" alt="logo">
+    </div>
+    <form ng-submit="search()" ng-init="focused=true" ng-class = "{'onfocus':focused}">
+      <input type="text" ng-model="searchTxt" ng-focus="focused=true"
+             ng-blur="focused=false" autofocus/>
     </form>
-    <p class="white-text" id="help">Click icon to search</p>
+    <a class="random" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank">
+      get random
+    </a>
+
   </div>
-  <div class="wrapper">
+  <div class="wrapper" ng-hide="isUndefined()">
     <ul><a ng-href="{{result.page}}" target="_blank" ng-repeat="result in results">
       <li>
         <h1>{{result.title}}</h1>
         <p>{{result.body}}</p>
-      </li></a></ul>
+      </li>
+    </a></ul>
   </div>
 </main>
 </body>
