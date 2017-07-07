@@ -5,6 +5,6 @@ import 'angular';
 import 'angular-mocks/angular-mocks';
 
 // import some modules by regex match
-const context = require.context('./app', true, /\.spec.js$/);
+const context = require.context('./app', true, /\.js$/);
 context.keys().forEach(context);
 

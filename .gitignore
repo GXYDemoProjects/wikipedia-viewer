@@ -4,3 +4,4 @@
 /coverage
 /backup
 index2.html
+*.back.js

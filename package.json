@@ -4,8 +4,8 @@
   "description": "Wikipedia Viwer for Free Code Campus",
   "main": "src/app/app.js",
   "scripts": {
-    "build": "rimraf dist && webpack --bail --progress --profile",
-    "dev": "webpack-dev-server --history-api-fallback --inline --progress",
+    "build": "rimraf dist && webpack --config webpack.prod.js --progress --profile",
+    "dev": "webpack-dev-server --config webpack.dev.js --history-api-fallback --inline --progress",
     "test": "karma start",
     "test-watch": "karma start --auto-watch --no-single-run",
     "start": "npm run server"
@@ -67,6 +67,7 @@
     "rimraf": "^2.5.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.13.0",
-    "webpack-dev-server": "2.2.0"
+    "webpack-dev-server": "2.2.0",
+    "webpack-merge": "^4.1.0"
   }
 }
