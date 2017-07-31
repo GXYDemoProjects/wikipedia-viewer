@@ -75,7 +75,7 @@ app.controller('MainCtrl', ['$scope', '$http', function ($scope, $http) {
 }]);
 
 
-if (DEVELOPMENT === 'development') {
+if (process.env.DEVELOPMENT === 'development') {
   if (module.hot) {
     module.hot.accept();
   }

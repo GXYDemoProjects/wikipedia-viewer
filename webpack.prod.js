@@ -10,7 +10,8 @@ const CommonConfig = require('./webpack.common.js');
 
 const prodConfig = {
   output: {
-    publicPath: '/',
+    path: path.resolve(__dirname, './dist'),
+    publicPath: './',
     filename: '[name].[chunkHash].min.js',
     chunkFilename: '[name].[chunkhash].min.js',
   },

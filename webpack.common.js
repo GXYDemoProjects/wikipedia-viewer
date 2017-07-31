@@ -14,7 +14,6 @@ module.exports = {
     vendor: ['angular', 'jquery'],
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
   },
   module: {
     rules: [{
@@ -68,7 +67,7 @@ module.exports = {
       },
     }),
     new ExtractTextPlugin({
-      filename: 'css/[name]-[contenthash:10].min.css',
+      filename: '[name]-[contenthash:10].min.css',
       allChunks: true }),
     new HtmlWebpackPlugin({
       template: './src/public/index.html',

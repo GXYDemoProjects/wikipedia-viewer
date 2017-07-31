@@ -8,6 +8,7 @@ const CommonConfig = require('./webpack.common.js');
 
 const devConfig = {
   output: {
+    path: path.resolve(__dirname, './dist'),
     publicPath: 'http://localhost:8080/',
     filename: '[name].bundle.js',
     chunkFilename: '[name].bundle.js',
