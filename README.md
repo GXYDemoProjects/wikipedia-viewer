@@ -8,6 +8,9 @@ Some improvements:
 to be realized with jQuery.
 3. The original webpack.config.js in [this project][2] is hard to understand straightly,
 so refactor the webpack config to be more friendly.
+4. Update UI
+
+![WikipediaViewer](./WikipediaViewer.PNG)
 
 To be done:
 1. Unit test
