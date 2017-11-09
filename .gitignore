@@ -1,7 +1,2 @@
-/.idea
-/node_modules
-/lib
-/coverage
-/backup
-index2.html
-*.back.js
+node_modules
+src
