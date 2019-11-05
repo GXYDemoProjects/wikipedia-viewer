@@ -1,5 +1,5 @@
 {
-  "name": "guoxiaoyang",
+  "name": "wikipedia-viewer",
   "version": "1.0.0",
   "description": "Wikipedia Viwer for Free Code Campus",
   "main": "src/app/app.js",
@@ -14,15 +14,15 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/GuoXiaoyang/WikipediaViewer.git"
+    "url": "git+https://github.com/GXYDemoProjects/wikipedia-viewer.git"
   },
   "keywords": [
     "AngularJS"
   ],
   "bugs": {
-    "url": "https://github.com/GuoXiaoyang/WikipediaViewer/issues"
+    "url": "https://github.com/GXYDemoProjects/wikipedia-viewer/issues"
   },
-  "homepage": "https://github.com/GuoXiaoyang/WikipediaViewer#readme",
+  "homepage": "https://github.com/GXYDemoProjects/wikipedia-viewer#readme",
   "dependencies": {
     "angular": "^1.5.0",
     "angular-animate": "^1.6.4",
